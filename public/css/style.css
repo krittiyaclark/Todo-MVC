@@ -80,3 +80,7 @@ li.todoItem.p-2.my-2 {
 	justify-content: space-between;
 	display: flex;
 }
+
+form.form-inline.my-5 {
+	justify-content: space-between;
+}
