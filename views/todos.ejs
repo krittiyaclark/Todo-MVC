@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -12,22 +13,47 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-        <li class='todoItem' data-id='<%=el._id%>'>
-            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-            <span class='del fa fa-trash'></span>
-        </li>
-    <% }) %>    
-    </ul>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="vh-100 background col-md-6 offset-md-3">
+					<header>
+						<nav>
+							<ul class="mt-1 d-flex">
+								<li class="px-1">
+									<a href="/">Home</a>
+								</li>
+								<li class="px-1 mx-2">
+									<a href="/todos">Create Todo</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+                    <section class="d-flex flex-column">
+                        <header class="header my-5">
+                            <h1>Todos</h1>
 
-    <h2>Things left to do: <%= left %></h2>
+                        </header>                   
 
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
+                        <form action="/todos/createTodo" method='POST' class="form-inline my-5">
+                        <input type="text" placeholder="Enter Todo Item" name='todoItem' class="form-control">
+                        <input type="submit" class="btn btn-primary">
+                    </form>
+
+                    <ul class="d-flex flex-column">
+                    <% todos.forEach( el => { %>
+                        <li class='todoItem p-2 my-2' data-id='<%=el._id%>'>
+                            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                            <span class='del fa fa-trash'></span>
+                        </li>
+                    <% }) %>    
+                    </ul>
+
+                    <h2>Things left to do: <%= left %></h2>
+                    </section>
+				</div>
+			</div>
+		</div>
+
 
     <script src="js/main.js"></script>
 </body>
